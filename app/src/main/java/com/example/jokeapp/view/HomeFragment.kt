@@ -26,10 +26,10 @@ class HomeFragment : Fragment() {
         val adapter = GroupieAdapter()
         recyclerView.adapter = adapter
 
-        adapter.add(CategoryItem(Category("Categoria 1", 0xff565656)))
-        adapter.add(CategoryItem(Category("Categoria 2", 0xff505050)))
-        adapter.add(CategoryItem(Category("Categoria 3", 0xff494949)))
-        adapter.add(CategoryItem(Category("Categoria 4", 0xff434343)))
+        adapter.add(CategoryItem(Category("Categoria 1", 0xff422a89)))
+        adapter.add(CategoryItem(Category("Categoria 2", 0xff594096)))
+        adapter.add(CategoryItem(Category("Categoria 3", 0xff6f56a3)))
+        adapter.add(CategoryItem(Category("Categoria 4", 0xff846cb0)))
 
         adapter.notifyDataSetChanged()
     }
