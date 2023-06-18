@@ -2,6 +2,7 @@
 Ongoing
 
 ## TECHNOLOGIES USED
+- MVP
 - Drawer Layout
 - Include
 - Fragment
