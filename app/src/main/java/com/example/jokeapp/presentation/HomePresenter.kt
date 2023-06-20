@@ -9,6 +9,7 @@ import com.example.jokeapp.view.HomeFragment
 class HomePresenter(private val view: HomeFragment) {
 
     fun findAllCategories() {
+        view.showProgress()
         fakeRequest()
     }
 
@@ -17,6 +18,10 @@ class HomePresenter(private val view: HomeFragment) {
         val categories = response.map { CategoryItem(it) }
 
         view.showCategories(categories)
+    }
+
+    fun onComplete() {
+        view.hideProgress()
     }
 
     private fun fakeRequest() {
@@ -30,6 +35,7 @@ class HomePresenter(private val view: HomeFragment) {
             )
 
             onSuccess(response)
+            onComplete()
 
         }, 2000)
     }
