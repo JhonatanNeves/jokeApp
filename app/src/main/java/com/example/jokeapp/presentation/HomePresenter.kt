@@ -13,9 +13,9 @@ class HomePresenter(private val view: HomeFragment) {
         fakeRequest()
     }
 
-    fun onSuccess(response: List<Category>) {
+    fun onSuccess(response: List<String>) {
 
-        val categories = response.map { CategoryItem(it) }
+        val categories = response.map { Category(it, 0xf000000) }
 
         view.showCategories(categories)
     }
@@ -28,10 +28,10 @@ class HomePresenter(private val view: HomeFragment) {
         Handler(Looper.getMainLooper()).postDelayed({
             val response = arrayListOf(
 
-                Category("Categoria 1", 0xff422a89),
-                Category("Categoria 2", 0xff594096),
-                Category("Categoria 3", 0xff6f56a3),
-                Category("Categoria 4", 0xff846cb0)
+                "Categoria 1",
+                "Categoria 2",
+                "Categoria 3",
+                "Categoria 4"
             )
 
             onSuccess(response)

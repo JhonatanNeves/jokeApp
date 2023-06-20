@@ -47,7 +47,8 @@ class HomeFragment : Fragment() {
         adapter.notifyDataSetChanged()
     }
 
-    fun showCategories(categories: List<CategoryItem>){
+    fun showCategories(response: List<Category>){
+        val categories = response.map { CategoryItem(it) }
         adapter.addAll(categories)
         adapter.notifyDataSetChanged()
     }
