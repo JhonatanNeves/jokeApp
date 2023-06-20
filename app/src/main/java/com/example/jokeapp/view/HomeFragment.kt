@@ -15,13 +15,18 @@ import com.xwray.groupie.GroupieAdapter
 class HomeFragment : Fragment() {
 
     private lateinit var presenter: HomePresenter
+    private val adapter = GroupieAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter = HomePresenter()
+        presenter = HomePresenter(this)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
@@ -33,9 +38,13 @@ class HomeFragment : Fragment() {
 
         presenter.findAllCategories()
 
-        val adapter = GroupieAdapter()
         recyclerView.adapter = adapter
 
+        adapter.notifyDataSetChanged()
+    }
+
+    fun showCategories(categories: List<CategoryItem>){
+        adapter.addAll(categories)
         adapter.notifyDataSetChanged()
     }
 
