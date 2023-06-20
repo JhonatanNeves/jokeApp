@@ -13,11 +13,8 @@ class HomePresenter(private val view: HomeFragment) {
     }
 
     fun onSuccess(response: List<Category>) {
-        val categories = mutableListOf<CategoryItem>()
 
-        for (category in response) {
-            categories.add(CategoryItem(category))
-        }
+        val categories = response.map { CategoryItem(it) }
 
         view.showCategories(categories)
     }
