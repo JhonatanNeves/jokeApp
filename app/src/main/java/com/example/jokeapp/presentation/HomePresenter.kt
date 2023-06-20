@@ -2,42 +2,32 @@ package com.example.jokeapp.presentation
 
 import android.os.Handler
 import android.os.Looper
+import com.example.jokeapp.data.CategoryRemoteDataSource
+import com.example.jokeapp.data.ListCategoryCallback
 import com.example.jokeapp.model.Category
-import com.example.jokeapp.view.CategoryItem
 import com.example.jokeapp.view.HomeFragment
 
-class HomePresenter(private val view: HomeFragment) {
+class HomePresenter(
+    private val view: HomeFragment,
+    private val dataSource: CategoryRemoteDataSource
+) : ListCategoryCallback {
 
     fun findAllCategories() {
         view.showProgress()
-        fakeRequest()
+        dataSource.findAllCategories(this)
     }
 
-    fun onSuccess(response: List<String>) {
+    override fun onSuccess(response: List<String>) {
 
         val categories = response.map { Category(it, 0xf000000) }
-
         view.showCategories(categories)
     }
 
-    fun onComplete() {
+    override fun onError(response: String) {
+        view.showFailure(response)
+    }
+
+    override fun onComplete() {
         view.hideProgress()
     }
-
-    private fun fakeRequest() {
-        Handler(Looper.getMainLooper()).postDelayed({
-            val response = arrayListOf(
-
-                "Categoria 1",
-                "Categoria 2",
-                "Categoria 3",
-                "Categoria 4"
-            )
-
-            onSuccess(response)
-            onComplete()
-
-        }, 2000)
-    }
-
 }

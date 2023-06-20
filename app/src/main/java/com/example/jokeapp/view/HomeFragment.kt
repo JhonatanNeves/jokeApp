@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jokeapp.R
+import com.example.jokeapp.data.CategoryRemoteDataSource
 import com.example.jokeapp.model.Category
 import com.example.jokeapp.presentation.HomePresenter
 import com.xwray.groupie.GroupieAdapter
@@ -21,7 +22,9 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter = HomePresenter(this)
+
+        val dataSource = CategoryRemoteDataSource()
+        presenter = HomePresenter(this, dataSource)
     }
 
     override fun onCreateView(
@@ -59,6 +62,10 @@ class HomeFragment : Fragment() {
 
     fun hideProgress() {
         progressBar.visibility = View.GONE
+    }
+
+    fun showFailure(response: String) {
+
     }
 
 }
