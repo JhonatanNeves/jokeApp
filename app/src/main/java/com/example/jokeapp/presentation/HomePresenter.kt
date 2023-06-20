@@ -32,6 +32,8 @@ class HomePresenter(private val view: HomeFragment) {
                 Category("Categoria 4", 0xff846cb0)
             )
 
+            onSuccess(response)
+
         }, 2000)
     }
 
