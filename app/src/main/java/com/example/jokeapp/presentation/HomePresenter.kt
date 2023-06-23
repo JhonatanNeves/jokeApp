@@ -19,7 +19,7 @@ class HomePresenter(
 
     override fun onSuccess(response: List<String>) {
 
-        val categories = response.map { Category(it, 0xf000000) }
+        val categories = response.map { Category(it, 0xFF422A89) }
         view.showCategories(categories)
     }
 
