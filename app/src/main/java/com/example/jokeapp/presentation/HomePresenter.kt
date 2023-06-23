@@ -9,7 +9,7 @@ import com.example.jokeapp.view.HomeFragment
 
 class HomePresenter(
     private val view: HomeFragment,
-    private val dataSource: CategoryRemoteDataSource
+    private val dataSource: CategoryRemoteDataSource = CategoryRemoteDataSource()
 ) : ListCategoryCallback {
 
     fun findAllCategories() {
@@ -19,7 +19,7 @@ class HomePresenter(
 
     override fun onSuccess(response: List<String>) {
 
-        val categories = response.map { Category(it, 0xf000000) }
+        val categories = response.map { Category(it, 0xFF422A89) }
         view.showCategories(categories)
     }
 
