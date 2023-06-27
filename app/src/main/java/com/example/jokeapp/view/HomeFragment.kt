@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jokeapp.R
@@ -43,20 +44,29 @@ class HomeFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_main)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        presenter.findAllCategories()
+        if (adapter.itemCount == 0) {
+            presenter.findAllCategories()
+        }
 
         recyclerView.adapter = adapter
+
+        adapter.setOnItemClickListener { item, view ->
+            val bundle = Bundle()
+            val categoryName = (item as CategoryItem).category.name
+            bundle.putString(JokeFragment.CATEGORY_KEY, categoryName)
+            findNavController().navigate(R.id.action_nav_home_to_nav_joke, bundle)
+        }
 
         adapter.notifyDataSetChanged()
     }
 
-    fun showCategories(response: List<Category>){
+    fun showCategories(response: List<Category>) {
         val categories = response.map { CategoryItem(it) }
         adapter.addAll(categories)
         adapter.notifyDataSetChanged()
     }
 
-    fun showProgress(){
+    fun showProgress() {
         progressBar.visibility = View.VISIBLE
     }
 
