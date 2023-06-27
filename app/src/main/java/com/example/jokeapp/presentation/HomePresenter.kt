@@ -1,5 +1,6 @@
 package com.example.jokeapp.presentation
 
+import android.graphics.Color
 import android.os.Handler
 import android.os.Looper
 import com.example.jokeapp.data.CategoryRemoteDataSource
@@ -18,8 +19,18 @@ class HomePresenter(
     }
 
     override fun onSuccess(response: List<String>) {
+        val start = 257
+        val end = 267
+        val diff = (end - start) / response.size
 
-        val categories = response.map { Category(it, 0xFF422A89) }
+        val categories = response.mapIndexed { index, s ->
+            val hsv = floatArrayOf(
+                start + (diff * index).toFloat(),
+               0.75f,
+                0.55f,
+            )
+
+            Category(s, Color.HSVToColor(hsv).toLong()) }
         view.showCategories(categories)
     }
 
