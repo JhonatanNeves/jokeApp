@@ -6,6 +6,7 @@ Ongoing
 - Drawer Layout
 - Include
 - Fragment
+- Retrofit
 - Navigation View
 - Jetpack
 - SplashScreen
