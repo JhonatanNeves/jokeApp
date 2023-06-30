@@ -28,7 +28,7 @@
 
     <fragment
         android:id="@+id/nav_about"
-        android:name="com.example.jokeapp.AboutFragment"
+        android:name="com.example.jokeapp.view.AboutFragment"
         android:label="@string/menu_about"
         tools:layout="@layout/fragment_about" />
 

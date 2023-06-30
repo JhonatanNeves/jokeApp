@@ -1,10 +1,13 @@
-package com.example.jokeapp
+package com.example.jokeapp.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.example.jokeapp.BuildConfig
+import com.example.jokeapp.R
 
 class AboutFragment : Fragment() {
 
@@ -15,4 +18,10 @@ class AboutFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_about, container, false)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.findViewById<TextView>(R.id.txt_version).text = getString(R.string.build_version, BuildConfig.VERSION_NAME)
+    }
+
 }
