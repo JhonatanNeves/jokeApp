@@ -4,6 +4,7 @@ Development of an application aimed at the entertainment area, JokeApp is an app
 ## TECHNOLOGIES USED
 - MVP
 - API'S
+- Modern Library
 - Drawer Layout
 - Include
 - Fragment
