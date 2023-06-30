@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.example.jokeapp.R
 import com.example.jokeapp.model.Joke
 import com.example.jokeapp.presentation.JokePresenter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class JokeFragment : Fragment() {
 
@@ -46,6 +47,10 @@ class JokeFragment : Fragment() {
         activity?.findViewById<Toolbar>(R.id.toolbar)?.title = categoryName
         progressBar = view.findViewById(R.id.progress_bar)
         textView = view.findViewById(R.id.txt_joke)
+
+        view.findViewById<FloatingActionButton>(R.id.fab).setOnClickListener{
+            presenter.findBy(categoryName)
+        }
 
         presenter.findBy(categoryName)
     }
