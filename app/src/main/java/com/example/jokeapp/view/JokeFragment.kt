@@ -4,14 +4,31 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.example.jokeapp.R
+import com.example.jokeapp.model.Joke
+import com.example.jokeapp.presentation.JokePresenter
 
 class JokeFragment : Fragment() {
 
     companion object {
         const val CATEGORY_KEY = "category"
+    }
+
+    private lateinit var progressBar: ProgressBar
+    private lateinit var textView: TextView
+    private lateinit var imageView: ImageView
+
+    private lateinit var presenter: JokePresenter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        presenter = JokePresenter(this)
     }
 
     override fun onCreateView(
@@ -24,8 +41,28 @@ class JokeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val categoryName = arguments?.getString(CATEGORY_KEY)
+        val categoryName = arguments?.getString(CATEGORY_KEY)!!
 
         activity?.findViewById<Toolbar>(R.id.toolbar)?.title = categoryName
+        progressBar = view.findViewById(R.id.progress_bar)
+        textView = view.findViewById(R.id.txt_joke)
+
+        presenter.findBy(categoryName)
+    }
+
+    fun showJoke(joke: Joke) {
+        textView.text = joke.text
+    }
+
+    fun showProgress() {
+        progressBar.visibility = View.VISIBLE
+    }
+
+    fun hideProgress() {
+        progressBar.visibility = View.GONE
+    }
+
+    fun showFailure(response: String) {
+
     }
 }
