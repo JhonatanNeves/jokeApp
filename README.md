@@ -1,5 +1,5 @@
 # jokeApp
-Ongoing
+Development of an application aimed at the entertainment area, JokeApp is an application idea that consumes famous API's in the market aimed at my professional growth.
 
 ## TECHNOLOGIES USED
 - MVP
