@@ -12,12 +12,19 @@ Ongoing
 - SplashScreen
 
 <div aling="light">
-<img aling="right" alt="Splash Screen" src="./app/tl_1.png" width="280px"/>
-  <img aling="right" alt="Splash Screen" src="./app/tl_2.png" width="280px"/>
+<img aling="right" alt="Splash Screen" src="./app/tl_1.png" width="280px"/> 
 </div>
 
 <div aling="light">
 <img aling="right" alt="Splash Screen" src="./app/tl_3.png" width="280px"/>
+</div>
+
+<div aling="light">
+  <img aling="right" alt="Splash Screen" src="./app/tl_2.png" width="280px"/>
+</div>
+
+<div aling="light">
+<img aling="right" alt="Splash Screen" src="./app/tl_5.png" width="280px"/>
 </div>
 
 ## 📜 License
